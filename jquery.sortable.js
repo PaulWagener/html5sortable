@@ -68,10 +68,10 @@ $.fn.sortable = function(options) {
 			}
 			e.preventDefault();
 			e.originalEvent.dataTransfer.dropEffect = 'move';
+			if (options.forcePlaceholderSize) {
+				placeholder.height(dragging.outerHeight());
+			}
 			if (items.is(this)) {
-				if (options.forcePlaceholderSize) {
-					placeholder.height(dragging.outerHeight());
-				}
 				dragging.hide();
 				$(this)[placeholder.index() < $(this).index() ? 'after' : 'before'](placeholder);
 				placeholders.not(placeholder).detach();
